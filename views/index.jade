@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
+  h1 Graph!
   p Welcome to #{title}
+  #graph
+    table(cellspacing='0', cellpadding='0')
+      - each row in graph
+        tr
+          - each el in row
+            td= el
+
