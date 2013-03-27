@@ -1,3 +1,27 @@
+function TrackGraph() {
+	var tracks = new Array();
+	var nodeID = 0;
+	var that = this;
+
+	this.addTrack = function(artist, title, bpm, key) {
+		tracks.push({id: nodeID++,
+					 artist: artist,
+					 title: title,
+					 bpm: bpm,
+					 key: key
+					});
+
+		return that;
+	};
+
+	this.addTracks = function(tt) {
+		tt.each(function(t) {
+			that.addTrack(t);
+		});
+		return that;
+	};
+};
+
 /* An adjacency matrix based graph implementation */
 function Graph(n) {
 	var matrix = new Array(n);
@@ -52,7 +76,7 @@ function Node(l) {
 	this.getEdges = function() {
 		return edges;
 	};
-}
+};
 
 function Edge(w) {
 	var weight = w;
@@ -71,5 +95,7 @@ function Edge(w) {
 	this.getNodes = function() {
 		return nodes;
 	};
+};
 
 exports.MyGraph = Graph;
+exports.TrackGraph = TrackGraph;
